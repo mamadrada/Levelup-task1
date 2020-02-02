@@ -10,7 +10,8 @@ function sanitizeAndStoreInput()
     	$textPurifier = new TextPurifier();
     	$purifiedText = $textPurifier->purify($inputStr);
     	$apiClient = new ApiClient('post');
-    	return "your text : '".$purifiedText."' successfully send to endpoint";
+    	$status = $apiClient->send($purifiedText);
+    	return "your text : '".$purifiedText."' successfully send to endpoint with status";
 
     } catch (Exception $e) {
     	return $e->getMessage();

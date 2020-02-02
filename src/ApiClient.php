@@ -15,15 +15,14 @@ class ApiClient
         $this->client = new Client();
     }
 
-    public function store(String $text)
+    public function send(String $text)
     {
         $response = $this->client->request($this->method, $this->url . '/posts',
             [
                 'body' => json_encode(['title' => 'test text ','body' => $text])
             ]
         );
-        
-        return json_decode($response->getBody()->getContents(), true);
+        return json_decode($response->getBody()->getContents());
         
     }
 }
